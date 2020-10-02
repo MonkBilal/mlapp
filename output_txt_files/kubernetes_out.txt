@@ -1,1 +1,34 @@
-<paste log output from Kubernetes-mediated prediction, here>
+
+xxxxx@xxxxx:~/Udacity/DevOps_Microservices/mlapp$ kubectl get pods
+NAME    READY   STATUS    RESTARTS   AGE
+mlapp   1/1     Running   0          17m
+
+
+xxxxx@xxxxx:~/Udacity/DevOps_Microservices/mlapp$ kubectl port-forward mlapp 8000:80
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
+
+
+xxxxx@xxxxx:~/Udacity/DevOps_Microservices/mlapp$ kubectl attach mlapp
+Defaulting container name to mlapp.
+Use 'kubectl describe pod/mlapp -n default' to see all of the containers in this pod.
+If you don't see a command prompt, try pressing enter.
+[2020-10-02 10:28:32,128] INFO in app: JSON payload: 
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2020-10-02 10:28:32,146] INFO in app: Inference payload DataFrame: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2020-10-02 10:28:32,166] INFO in app: Scaling Payload: 
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2020-10-02 10:28:32,169] INFO in app: Predicted value: [20.35373177134412] 
+127.0.0.1 - - [02/Oct/2020 10:28:32] "POST /predict HTTP/1.1" 200 -
+
+
+
+
+
+
+
+
