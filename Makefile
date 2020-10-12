@@ -12,9 +12,9 @@ setup:
 
 install:
 	# This should be run from inside a virtualenv
-	. devops/bin/activate
-	pip3 install --upgrade pip &&\
-		pip3 install -r requirements.txt
+	. devops/bin/activate &&\
+	pip install --upgrade pip &&\
+	pip install -r requirements.txt
 
 test:
 	# Additional, optional, tests could go here
@@ -28,12 +28,12 @@ run-circleci-local:
 	circleci local execute
 
 lint:
-	. devops/bin/activate
 	# See local hadolint install instructions:   https://github.com/hadolint/hadolint
 	# This is linter for Dockerfiles
 	hadolint --ignore=DL3013 Dockerfile
 	# This is a linter for Python source code linter: https://www.pylint.org/
-	# This should be run from inside a virtualenv
-	pylint --disable=R,C,W1203 app.py
+	# This should be run from inside a virtualenvi
+	. devops/bin/activate &&\
+        pylint --disable=R,C,W1203 app.py
 
-all: install lint test
+all: setup install lint 
