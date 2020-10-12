@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Install dependencies') {
       steps {
-        sh '''python3 -m venv venv
-. venv/bin/activate
+        sh '''python3 -m venv venv 
+source venv/bin/activate 
 make install
 
 '''
