@@ -12,7 +12,7 @@ setup:
 
 install:
 	# This should be run from inside a virtualenv
-	source .devops/bin/activate
+	. devops/bin/activate
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
 
@@ -28,7 +28,7 @@ run-circleci-local:
 	circleci local execute
 
 lint:
-	source .devops/bin/activate
+	. devops/bin/activate
 	# See local hadolint install instructions:   https://github.com/hadolint/hadolint
 	# This is linter for Dockerfiles
 	hadolint --ignore=DL3013 Dockerfile
