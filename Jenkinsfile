@@ -13,8 +13,7 @@ make install
 
     stage('Linting') {
       steps {
-        sh '''deactivate
-make lint'''
+        sh 'make lint'
       }
     }
 
