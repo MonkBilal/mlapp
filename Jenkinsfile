@@ -1,4 +1,9 @@
 pipeline {
+  environment { 
+        registry = "monkbilal/mlapp" 
+        registryCredential = 'dockerhub' 
+        dockerImage = '' 
+    }
   agent any
   stages {
     stage('Install dependencies') {
@@ -17,13 +22,18 @@ make install
 
     stage('Build') {
       steps {
-        sh 'docker build . -t monkbilal/mlapp:latest'
+	script { 
+        dockerImage = docker.build registry + ":latest" 
+        }
       }
     }
 
     stage('Upload to dockerhub') {
       steps {
-        sh 'docker push monkbilal/mlapp:latest'
+        script { 
+         docker.withRegistry( '', registryCredential ) { 
+         dockerImage.push() 
+       }
       }
     }
 
