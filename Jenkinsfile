@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Linting') {
+    stage('Install dependencies') {
       steps {
-        sh 'make lint'
+        sh 'make install'
       }
     }
 
