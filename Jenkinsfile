@@ -3,18 +3,15 @@ pipeline {
   stages {
     stage('Install dependencies') {
       steps {
-        sh '''python3 -m venv venv 
-source venv/bin/activate 
+        sh '''make setup
 make install
-
 '''
       }
     }
 
     stage('Linting') {
       steps {
-        sh '''source venv/bin/activate
-make lint'''
+        sh '''make lint'''
       }
     }
 
