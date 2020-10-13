@@ -38,8 +38,8 @@ make install
     stage('Deployment') {
       steps {
         sh 'aws eks --region ap-south-1 update-kubeconfig --name Capstone'
-        sh '/usr/bin/kubectl apply -f Deployment/Deployment.yml'
-        sh '/usr/bin/kubectl get all'
+        sh 'kubectl apply -f Deployment/Deployment.yml'
+        sh 'kubectl get all'
       }
     }
 
