@@ -37,7 +37,6 @@ make install
 
     stage('Deployment') {
       steps {
-        withAWS(credentials: 'AWS_ADMIN', region: 'ap-south-1')
         sh 'aws eks --region ap-south-1 update-kubeconfig --name Capstone'
         sh '/usr/bin/kubectl apply -f Deployment/Deployment.yml'
         sh '/usr/bin/kubectl get all'
