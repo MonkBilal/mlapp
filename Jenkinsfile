@@ -44,20 +44,20 @@ make install
       sh "kubectl get pod -o wide"
       sh "kubectl get svc"
 
-  }
+      }
+     }
   }
    stage("Cleaning up") {
         steps{
             echo 'Cleaning up...'
             sh "docker system prune"
         }
-   }
-
-  }
+       }
+}
   environment {
     registry = 'monkbilal/mlapp'
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
-}
 
+}
